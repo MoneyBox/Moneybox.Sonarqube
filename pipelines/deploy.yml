@@ -6,7 +6,6 @@ trigger:
 variables:
   azureSubscription: 'Rich-temp'
   appName: 'app-sonarqube-operations00-neu'         
-  resourceGroup: 'sonarqube-resource-group'    
   startupScript: 'start-sonar.ps1'        
   artifactName: 'drop'              
 
@@ -37,6 +36,7 @@ stages:
             ArtifactName: '$(artifactName)'                              # Name of the published artifact
 
 - stage: Deploy
+  pool: 'terraform-vmss'
   displayName: "Deploy to Azure App Service"
   dependsOn: Build
   condition: succeeded()
