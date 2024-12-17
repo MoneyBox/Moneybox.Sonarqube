@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - main
+
+variables:
+  azureSubscription: '<Azure_Service_Connection>'
+  appName: 'app-sonarqube-operations00-neu'
+'
+
+stages:
+- stage: Deploy
+  displayName: "Deploy Startup Script to App Service"
+  jobs:
+    - job: DeployScript
+      displayName: "Deploy Script"
+      pool:
+        vmImage: 'windows-latest'
+
+      steps:
+        - checkout: self
+          displayName: "Checkout Repository"
+
+        - task: AzureWebApp@1
+          displayName: "Deploy Script to Azure App Service"
+          inputs:
+            azureSubscription: $(azureSubscription)
+            appType: 'webApp'
+            appName: $(appName)
+            package: '$(Build.SourcesDirectory)/start-sonarqube.ps1'
