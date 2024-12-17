@@ -60,4 +60,4 @@ stages:
             azureSubscription: '$(azureSubscription)'
             appType: 'webApp'
             appName: '$(appName)'
-            package: '$(System.ArtifactsDirectory)/$(startupScript)'
+            package: '$(System.ArtifactsDirectory)/$(artifactName)/$(startupScript)'
