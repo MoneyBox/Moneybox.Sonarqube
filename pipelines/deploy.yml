@@ -35,12 +35,12 @@ stages:
 
 - stage: Deploy
   displayName: "Deploy to Azure App Service"
+  pool: 'Terraform-VMSS-Pool'
   dependsOn: Build
   condition: succeeded()
   jobs:
     - job: DeployScript
       displayName: "Deploy Script File"
-      pool: 'terraform-vmss'
       steps:
         # Download the published artifact
         - task: DownloadBuildArtifacts@0
