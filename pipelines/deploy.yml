@@ -4,7 +4,7 @@ trigger:
       - main
 
 variables:
-  azureSubscription: '<Azure_Service_Connection>'
+  azureSubscription: 'Rich-temp'
   appName: 'app-sonarqube-operations00-neu'
 '
 
