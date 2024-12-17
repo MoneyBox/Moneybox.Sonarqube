@@ -11,10 +11,8 @@ variables:
 
 stages:
 - stage: Build
-  displayName: "Build: Publish Script"
   jobs:
     - job: BuildAndPublish
-      displayName: "Publish Script as Build Artifact"
       steps:
         # Checkout the repository
         - checkout: self
@@ -34,13 +32,11 @@ stages:
             ArtifactName: '$(artifactName)'                              # Name of the published artifact
 
 - stage: Deploy
-  displayName: "Deploy to Azure App Service"
   pool: 'Terraform-VMSS-Pool'
   dependsOn: Build
   condition: succeeded()
   jobs:
     - job: DeployScript
-      displayName: "Deploy Script File"
       steps:
         # Download the published artifact
         - task: DownloadBuildArtifacts@0
