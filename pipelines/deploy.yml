@@ -53,11 +53,21 @@ stages:
             artifactName: '$(artifactName)'  # Name of the artifact to download
             downloadPath: '$(System.ArtifactsDirectory)'  # Path to download the artifact
 
-        # Deploy the script directly to Azure App Service
+        # Archive the script file into a ZIP
+        - task: ArchiveFiles@2
+          displayName: "Archive Script into ZIP"
+          inputs:
+            rootFolderOrFile: '$(System.ArtifactsDirectory)/$(artifactName)/$(startupScript)'
+            includeRootFolder: false
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/script.zip'
+            replaceExistingArchive: true
+
+        # Deploy the ZIP file to Azure App Service
         - task: AzureWebApp@1
           displayName: "Deploy Script to Azure App Service"
           inputs:
             azureSubscription: '$(azureSubscription)'
             appType: 'webApp'
             appName: '$(appName)'
-            package: '$(System.ArtifactsDirectory)/$(artifactName)/$(startupScript)'
+            package: '$(Build.ArtifactStagingDirectory)/script.zip'
