@@ -15,8 +15,6 @@ stages:
   jobs:
     - job: BuildAndPublish
       displayName: "Publish Script as Build Artifact"
-      pool:
-        vmImage: 'windows-latest'
       steps:
         # Checkout the repository
         - checkout: self
@@ -36,15 +34,13 @@ stages:
             ArtifactName: '$(artifactName)'                              # Name of the published artifact
 
 - stage: Deploy
-  pool: 'terraform-vmss'
   displayName: "Deploy to Azure App Service"
   dependsOn: Build
   condition: succeeded()
   jobs:
     - job: DeployScript
       displayName: "Deploy Script File"
-      pool:
-        vmImage: 'windows-latest'
+      pool: 'terraform-vmss'
       steps:
         # Download the published artifact
         - task: DownloadBuildArtifacts@0
