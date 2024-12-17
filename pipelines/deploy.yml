@@ -6,7 +6,6 @@ trigger:
 variables:
   azureSubscription: 'Rich-temp'
   appName: 'app-sonarqube-operations00-neu'
-'
 
 stages:
 - stage: Deploy
