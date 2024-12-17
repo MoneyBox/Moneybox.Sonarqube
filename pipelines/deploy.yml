@@ -7,7 +7,7 @@ variables:
   azureSubscription: 'Rich-temp'
   appName: 'app-sonarqube-operations00-neu'         
   resourceGroup: 'sonarqube-resource-group'    
-  startupScript: 'start-sonarqube.ps1'        
+  startupScript: 'start-sonar.ps1'        
   artifactName: 'drop'              
 
 stages:
