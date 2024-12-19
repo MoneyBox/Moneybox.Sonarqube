@@ -2,7 +2,7 @@
 $SonarQubeVersion = "10.8.0.100206" # Replace with latest version and build
 # Replace with latest download url from https://www.sonarsource.com/products/sonarqube/downloads/success-download-developer-edition/
 $SonarQubeUrl = "https://binaries.sonarsource.com/CommercialDistribution/sonarqube-developer/sonarqube-developer-10.8.0.100206.zip?_gl=1*8cqi2i*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAsOq6BhDuARIsAGQ4-zhy3nsVvkDASIv5thpI5qCX_MoCmHsXSZ9oZhkY0TV92UBr5AhmvUMaAkL6EALw_wcB"
-$InstallDir = "C:\home\site\wwwroot\sonarqube"
+$InstallDir = "D:\home\site\wwwroot\sonarqube"
 $SonarQubeHome = "$InstallDir\sonarqube-10.8.0.100206" # Replace with latest version and build
 $DataDir = "$InstallDir\data"
 $LogsDir = "$InstallDir\logs"
